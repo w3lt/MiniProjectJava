@@ -1,8 +1,8 @@
-package core.entities;
+package com.aletheia.miniproject.core.entities;
 
 public enum DemandStatus {
     PENDING,
-    CANCELED,
+    CANCELLED,
     APPROVED,
     REJECTED
 }

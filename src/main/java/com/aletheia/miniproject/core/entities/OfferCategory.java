@@ -1,4 +1,4 @@
-package core.entities;
+package com.aletheia.miniproject.core.entities;
 
 import jakarta.persistence.*;
 
@@ -8,12 +8,12 @@ public class OfferCategory {
     @EmbeddedId
     private OfferCategoryKey id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("offerId")
     @JoinColumn(name = "offer_id", nullable = false)
     private Offer offer;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("categoryId")
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;

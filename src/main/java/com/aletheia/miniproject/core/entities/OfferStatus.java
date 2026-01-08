@@ -1,4 +1,4 @@
-package core.entities;
+package com.aletheia.miniproject.core.entities;
 
 public enum OfferStatus {
     OPEN,

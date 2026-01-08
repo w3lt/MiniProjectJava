@@ -1,25 +1,23 @@
-package core.facade;
+package com.aletheia.miniproject.core.facade;
 
-import core.entities.Association;
-import core.entities.Demand;
-import core.entities.Member;
-import core.entities.Offer;
+import com.aletheia.miniproject.core.entities.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-public class RessourcerieFacade {
+public interface IRessourcerieFacade {
+    Member createMember(String name, Association association);
+
+    Category createCategory(String name);
+
     /**
      * Creates a new association and its contact person (representer).
      *
      * @param name            the name of the association
-     * @param representerName the name of the contact member for this association
      * @return the created Association object, including its generated identifier
      */
-    public Association createAssociation(String name, String representerName) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    Association createAssociation(String name);
 
     /**
      * Adds a new member to an existing association.
@@ -28,9 +26,7 @@ public class RessourcerieFacade {
      * @param memberName    the name of the new member
      * @return the created Member object, with its generated identifier
      */
-    public Member addMember(int associationId, String memberName) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    Member addMember(Long associationId, String memberName);
 
     /**
      * Creates a new offer on behalf of an association.
@@ -43,18 +39,14 @@ public class RessourcerieFacade {
      * @param categoryIds list of category IDs in which the offer should appear
      * @return the created Offer object, with status OPEN and a creation timestamp
      */
-    public Offer createOffer(int contactId, String name, String description, BigDecimal price, List<Long> categoryIds) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    Offer createOffer(Long contactId, String name, String description, BigDecimal price, List<Long> categoryIds);
 
     /**
      * Returns the list of all offers, regardless of category.
      *
      * @return a list containing all existing offers (OPEN or CLOSED but not archived)
      */
-    public List<Offer> listOffers() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    List<Offer> listOffers();
 
     /**
      * Returns the list of offers that belong to a specific category.
@@ -62,9 +54,7 @@ public class RessourcerieFacade {
      * @param categoryId ID of the category; if null, all offers should be returned
      * @return the list of matching Offer objects
      */
-    public List<Offer> listOffersByCategory(Long categoryId) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    List<Offer> listOffersByCategory(Long categoryId);
 
     /**
      * Creates a new demand (request) for an offer.
@@ -74,9 +64,7 @@ public class RessourcerieFacade {
      * @param memberId the ID of the member making the demand
      * @return the created Demand object, with status PENDING and a timestamp
      */
-    public Demand createDemand(Long offerId, Long memberId) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    Demand createDemand(Long offerId, Long memberId);
 
     /**
      * Cancels an existing demand.
@@ -84,9 +72,7 @@ public class RessourcerieFacade {
      *
      * @param demandId the ID of the demand to cancel
      */
-    public void cancelDemand(Long demandId) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    void cancelDemand(Long demandId);
 
     /**
      * Computes the rank (position) of a demand in the queue for its offer.
@@ -94,9 +80,7 @@ public class RessourcerieFacade {
      * @param demandId the ID of the demand
      * @return the rank (1 = first), or -1 if the demand does not exist
      */
-    public int getDemandRank(Long demandId) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    Long getDemandRank(Long demandId);
 
     /**
      * Validates an offer transfer.
@@ -108,9 +92,7 @@ public class RessourcerieFacade {
      * @param offerId         ID of the offer to validate
      * @return the winning Demand, or null if no PENDING demand exists
      */
-    public Demand validateOffer(Long contactMemberId, Long offerId) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    Demand validateOffer(Long contactMemberId, Long offerId);
 
     /**
      * Archives an offer and all of its demands.
@@ -118,9 +100,7 @@ public class RessourcerieFacade {
      *
      * @param offerId ID of the offer to archive
      */
-    public void archiveOffer(Long offerId) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    void archiveOffer(Long offerId);
 
     /**
      * Computes how many offers each association has created.
@@ -128,9 +108,7 @@ public class RessourcerieFacade {
      * @return a map where the key is the association ID,
      * and the value is the number of offers it created
      */
-    public Map<Integer, Integer> getOfferCountByAssociation() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    Map<Integer, Integer> getOfferCountByAssociation();
 
     /**
      * Computes how many offers each association has won.
@@ -139,7 +117,5 @@ public class RessourcerieFacade {
      * @return a map where the key is the association ID,
      * and the value is the number of won offers
      */
-    public Map<Integer, Integer> getOfferWinsByAssociation() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    Map<Integer, Integer> getOfferWinsByAssociation();
 }

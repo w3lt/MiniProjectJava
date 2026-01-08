@@ -1,4 +1,4 @@
-package core.entities;
+package com.aletheia.miniproject.core.entities;
 
 import jakarta.persistence.*;
 
@@ -22,6 +22,10 @@ public class Member {
     public Member(String name, Association association) {
         this.name = name;
         this.association = association;
+    }
+
+    public Member(String name) {
+        this.name = name;
     }
 
     public Long getId() {

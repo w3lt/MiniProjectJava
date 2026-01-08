@@ -1,4 +1,4 @@
-package core.entities;
+package com.aletheia.miniproject.core.entities;
 
 import jakarta.persistence.*;
 
@@ -13,10 +13,14 @@ public class Association {
     private String name;
 
     @OneToOne
-    @JoinColumn(name = "representer_id", nullable = false)
+    @JoinColumn(name = "representer_id", nullable = true)
     private Member representer;
 
     public Association() {
+    }
+
+    public Association(String name) {
+        this.name = name;
     }
 
     public Association(String name, Member representer) {

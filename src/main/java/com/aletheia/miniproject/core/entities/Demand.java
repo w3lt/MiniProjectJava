@@ -1,4 +1,4 @@
-package core.entities;
+package com.aletheia.miniproject.core.entities;
 
 import jakarta.persistence.*;
 
@@ -34,6 +34,10 @@ public class Demand {
         this.demander = demander;
         this.createdAt = createdAt;
         this.status = status;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Offer getOffer() {
